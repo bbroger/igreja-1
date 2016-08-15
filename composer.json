@@ -1,0 +1,10 @@
+{
+    "require": {
+        "slim/slim": "^3.4",
+        "monolog/monolog": "^1.20",
+        "slim/php-view": "^2.1",
+        "slim/pdo": "^1.9",
+        "dompdf/dompdf": "^0.7.0",
+        "tuupola/slim-basic-auth": "^2.0"
+    }
+}

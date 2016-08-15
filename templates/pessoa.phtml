@@ -1,0 +1,127 @@
+<h2 class="sub-header">Membro</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+			<th>#</th>
+			<th>Nome</th>
+			<th>Sobrenome</th>
+			<th>Data cadastro</th>
+			<th>Status</th>
+			<th>Alterar informações</th>
+			<th>Pasta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+				<td> <?= $pessoa['id_pessoa']       ?> </td>
+				<td> <?= $pessoa['nome']            ?> </td>
+				<td> <?= $pessoa['sobrenome']       ?> </td>
+				<td> <?= $pessoa['data_cadastro']   ?> </td>
+				<td> <?= $pessoa['status']          ?> </td>
+				<td> 
+				<form method="get" action="/membro/editar/<?= $pessoa['id_pessoa'] ?>">  
+					<button type="submit" class="btn">
+      					<span class="glyphicon glyphicon-edit"></span>
+    				</button>
+    			</form>
+    			</td>
+    			<td> 
+				<form method="get" action="/membro/pasta/<?= $pessoa['id_pessoa'] ?>">  
+					<button type="submit" class="btn">
+      					<span class="glyphicon glyphicon-edit"></span>
+    				</button>
+    			</form>
+    			</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<h2 class="sub-header">Gerar boleto</h2>
+
+
+
+<h2 class="sub-header">Adicionar pagamento</h2>
+
+<form class="form-horizontal" method="post" action="/pagamento/add">
+	<input type="hidden" name="id_pessoa" value="<?= $pessoa['id_pessoa']?>"> 
+	<div class="row">
+		<div class="form-group col-xs-2" style="padding-right: 50;">
+			<label class="control-label" for="textinput">Ano</label>  
+			<input class="form-control" name="ano" value=""></input>
+		</div>
+		<div class="form-group col-xs-2" style="padding-right: 50;">
+			<label class="control-label" for="textinput">Tipo</label> 
+  			<select name="tipo" class="form-control" id="sel1">
+    			<option name="tipo" value="Inteiro"	>Inteiro</option>
+    			<option name="tipo" value="Meio"	>Meio</option>
+    			<option name="tipo" value="Doação"	>Doação</option>
+  			</select>
+		</div>
+		<div id="valor" class="hidden form-group col-xs-2" style="padding-right: 50;">
+			<label class="control-label" for="textinput">Valor</label> 
+			<input class="form-control" name="valor" value="0.00"></input>
+		</div>
+		<div class="form-group col-xs-2" style="padding-right: 50;">
+			<label class="control-label" for="textinput">Enviar</label> 
+			<input class="form-control" class="button" type="submit" name="submit" value="Adicionar">  
+		</div>
+	</div>
+</form>
+
+<script>
+$( "select" )
+  .change(function() {
+    var str = "";
+    $( "select option:selected" ).each(function() {
+      str += $( this ).text();
+    });
+    
+    if (str == "Doação") {
+    	$("#valor").removeClass( "hidden" )
+    } else {
+    	$("#valor").addClass( "hidden" )
+    };
+
+  })
+  .trigger( "change" );
+</script>
+
+<h2 class="sub-header">Pagamentos</h2>
+
+<div class="table-responsive">
+	<table class="table table-striped">
+    	<thead>
+        	<tr>
+        		<th>#</th>
+				<th>Ano</th>
+				<th>Tipo</th>
+				<th>Valor</th>
+				<th>Data pagamento</th>
+				<th>Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($pagamentos as $p => $pagamento): ?>
+        	<tr>
+            	<td> <?= $pagamento['id_pagamento']		?> </td>
+                <td> <?= $pagamento['ano']				?> </td>
+                <td> <?= $pagamento['tipo']				?> </td>
+                <td> <?= $pagamento['valor']			?> </td>
+                <td> <?= $pagamento['data_pagamento']	?> </td>
+                <td>
+				<form method="post" action="/pagamento/del">
+					<input type="hidden" name="id_pagamento" value="<?= $pagamento['id_pagamento']?>"> 
+                    <input type="hidden" name="id_pessoa" value="<?= $pessoa['id_pessoa']?>"> 
+					<button type="submit" class="btn">
+      					<span class="glyphicon glyphicon-remove"></span>
+    				</button>
+    			</form>			
+				</td>
+            </tr>
+        <?php endforeach ?>
+        </tbody>
+    </table>
+</div>

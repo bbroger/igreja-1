@@ -1,0 +1,101 @@
+<h2 class="sub-header">Editar membro
+
+	<form class="form-horizontal pull-right" method="post" action="/del">
+		<input type="hidden" name="id" value="<?= $pessoa['id_pessoa']?>"> 
+		<button id="submit" name="submit" class="btn btn-danger">Deletar</button>
+	</form>
+
+</h2>
+
+<form class="form-horizontal" method="post" action="/edit">
+  <fieldset>
+
+  <input type="hidden" name="id" value="<?= $pessoa['id_pessoa']?>"> 
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Nome do membro</label>  
+      <div class="col-md-4">
+        <input id="textinput" name="nome" value="<?= $pessoa['nome']?>" placeholder="Digite o nome..." class="form-control input-md" required="" type="text">
+        <span class="help-block">Ex: Fausto Henrique</span>  
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="Sobrenome">Sobrenome</label>  
+      <div class="col-md-4">
+        <input id="Sobrenome" name="sobrenome" value="<?= $pessoa['sobrenome']?>" placeholder="Digite o sobrenome..." class="form-control input-md" required="" type="text">
+        <span class="help-block">Ex: Hoch</span>  
+      </div>
+  </div>
+
+  <div class="form-group">
+  <label class="col-md-4 control-label" name="status" for="tipo">Tipo</label>
+    <div class="col-md-4">
+      <div class="radio">
+        <label for="tipo-0">
+          <input name="status" id="tipo-0" value="Ativo" checked="checked" type="radio">
+          Ativo
+        </label>
+      </div>
+      <div class="radio">
+        <label for="tipo-1">
+          <input name="status" id="tipo-1" value="Inativo" type="radio">
+          Inativo
+        </label>
+      </div>
+      <div class="radio">
+        <label for="tipo-2">
+          <input name="status" id="tipo-2" value="Falecido" type="radio">
+            Falecido
+        </label>
+      </div>
+    </div>
+  </div>
+
+    <div class="form-group">
+    <label class="col-md-4 control-label">Salvar edição</label>
+      <div class="col-md-4">
+        <button id="submit" name="submit" class="btn btn-primary">Salvar</button>
+      </div>
+  </div>
+</fieldset>
+</form>
+
+<!--
+
+<h2 class="sub-header">Membro</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+			<th>#</th>
+			<th>Nome</th>
+			<th>Sobrenome</th>
+			<th>Data cadastro</th>
+			<th>Tipo</th>
+			<th>Status</th>
+			<th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+				<td> <?= $pessoa['id_pessoa']       ?> </td>
+				<td> <?= $pessoa['nome']            ?> </td>
+				<td> <?= $pessoa['sobrenome'];      ?> </td>
+				<td> <?= $pessoa['data_cadastro'];  ?> </td>
+				<td> <?php echo "Inteiro";          ?></td>
+				<td> <?php echo "Vivo";          ?></td>
+				<td> 
+				<form method="get" action="/membro/editar/<?= $pessoa['id_pessoa'] ?>">  
+					<button type="submit" class="btn">
+      					<span class="glyphicon glyphicon-edit"></span>
+    				</button>
+    			</form>
+    			</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+-->

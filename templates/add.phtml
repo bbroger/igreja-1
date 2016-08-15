@@ -1,0 +1,53 @@
+<h2 class="sub-header">Adicionar membro</h2>
+
+<form class="form-horizontal" method="post">
+  <fieldset>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Nome do membro</label>  
+      <div class="col-md-4">
+        <input id="textinput" name="nome" placeholder="Digite o nome..." class="form-control input-md" required="" type="text">
+        <span class="help-block">Ex: Fausto Henrique</span>  
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="Sobrenome">Sobrenome</label>  
+      <div class="col-md-4">
+        <input id="Sobrenome" name="sobrenome" placeholder="Digite o sobrenome..." class="form-control input-md" required="" type="text">
+        <span class="help-block">Ex: Hoch</span>  
+      </div>
+  </div>
+
+  <div class="form-group">
+  <label class="col-md-4 control-label" name="status" for="tipo">Tipo</label>
+    <div class="col-md-4">
+      <div class="radio">
+        <label for="tipo-0">
+          <input name="status" id="tipo-0" value="Ativo" checked="checked" type="radio">
+          Ativo
+        </label>
+      </div>
+      <div class="radio">
+        <label for="tipo-1">
+          <input name="status" id="tipo-1" value="Inativo" type="radio">
+          Inativo
+        </label>
+      </div>
+      <div class="radio">
+        <label for="tipo-2">
+          <input name="status" id="tipo-2" value="Falecido" type="radio">
+            Falecido
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="submit">Adionar novo membro</label>
+      <div class="col-md-4">
+        <button id="submit" name="submit" class="btn btn-primary">Adicionar</button>
+      </div>
+  </div>
+</fieldset>
+</form>

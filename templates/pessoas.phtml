@@ -1,0 +1,50 @@
+<h2 class="sub-header">Membros
+  	<span class="pull-right"> Total de membros: <?= $contagem ?></span>
+</h2>
+
+<form class="form-inline" method="post">
+    <div class="row">
+        <div class="form-group col-xs-11" style="padding-right: 0;">
+            <label class="sr-only" for="term">Buscar</label>
+            <input type="text" class="form-control" style="width: 100%;" name="l" id="term" placeholder="Procurar..." autocomplete="off">
+        </div>
+        <div class="form-group col-xs-1">
+            <button type="submit" name="search" class="form-control" class="button" id="search">Buscar</button>
+        </div>
+    </div>
+</form>
+
+<br>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+			<th>#</th>
+			<th>Nome</th>
+			<th>Sobrenome</th>
+			<th>Data cadastro</th>
+			<th>Status</th>
+			<th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($pessoas as $p => $pessoa): ?>
+            <tr>
+				<td> <?= $pessoa['id_pessoa']       ?> </td>
+				<td> <?= $pessoa['nome']            ?> </td>
+				<td> <?= $pessoa['sobrenome'];      ?> </td>
+				<td> <?= $pessoa['data_cadastro'];  ?> </td>
+				<td> <?= $pessoa['status'];         ?></td>
+				<td> 
+					<form method="get" action="/membro/<?= $pessoa['id_pessoa'] ?>">  
+						<button type="submit" class="btn">
+      						<span class="glyphicon glyphicon-edit"></span>
+    					</button>
+    				</form>
+    			</td>
+			</tr>
+		<?php endforeach ?>
+		</tbody>
+	</table>
+</div>

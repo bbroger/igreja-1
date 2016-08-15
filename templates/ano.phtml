@@ -1,0 +1,46 @@
+<h2 class="sub-header">Adicionar valor para o ano</h2>
+
+<form class="form-horizontal" method="post" action="<?php echo htmlspecialchars($_SERVER["REQUEST_URI"]);?>">
+	<div class="row">
+		<div class="form-group col-xs-2" style="padding-right: 50;">
+			<label class="control-label" for="textinput">Ano</label>  
+			<input class="form-control" name="ano" value=""></input>
+		</div>
+		<div class="form-group col-xs-2" style="padding-right: 50;">
+			<label class="control-label" for="textinput">Valor</label> 
+			<input class="form-control" name="valor" value=""></input>
+		</div>
+		<div class="form-group col-xs-2" style="padding-right: 50;">
+			<label class="control-label" for="textinput">Enviar</label> 
+			<input class="form-control" class="button" type="submit" name="submit" value="Adicionar">  
+		</div>
+	</div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+			<th>Ano</th>
+			<th>Valor</th>
+			<th>Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($anos as $a => $ano): ?>
+            <tr>
+				<td> <?= $ano['ano']		?> </td>
+				<td> <?= $ano['valor']		?> </td>
+				<td>
+				<form method="post" action="/ano/del">
+					<input type="hidden" name="ano" value="<?= $ano['ano']?>"> 
+					<button type="submit" class="btn">
+      					<span class="glyphicon glyphicon-remove"></span>
+    				</button>
+    			</form>			
+				</td>
+			</tr>
+		<?php endforeach ?>
+		</tbody>
+	</table>
+</div>
